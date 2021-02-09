@@ -23,6 +23,7 @@ const Home = () => {
 
   const {region, country, localtime, temp_c, icon} = cityWeather;
 
+  console.log(process.env);
   /*
    * @fetch city weather detail
    */
@@ -33,7 +34,7 @@ const Home = () => {
     return () => {
       setCity(initialCityWeatherProps);
     };
-  }, []);
+  }, [city]);
   const derivedBackgroundColor = () => {
     switch (true) {
       case temp_c >= 20:
@@ -72,7 +73,7 @@ const Home = () => {
               history.push(`/weather/${city}`);
               setCity(baseCity);
             }}
-            disabled={city?.trim().length >= 1 ? false : true}
+            disabled={city.length >= 1 ? false : true}
           >
             Search
           </button>
@@ -87,7 +88,7 @@ const Home = () => {
             <h3>{`${region} of ${country}`} </h3>
             <div>
               <span>
-                <p>The weather is ${temp_c} °C</p>
+                <p>The weather is {temp_c} °C</p>
                 <img src={icon} alt="" />
               </span>
               <time>{localtime}</time>

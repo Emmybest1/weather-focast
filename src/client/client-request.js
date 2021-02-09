@@ -4,7 +4,7 @@ export const application__api = () => ({
   async get(city = 'tallinn') {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_WEATHERAPI_BASEUR}/forecast.json?key=${process.env.REACT_APP_WEATHERAPI_API_KEY}&q=${city}`.toLocaleLowerCase()
+        `${process.env.REACT_APP_WEATHERAPI_BASEURL}/forecast.json?key=${process.env.REACT_APP_WEATHERAPI_API_KEY}&q=${city}`
       );
 
       if (response?.status === 200) {
