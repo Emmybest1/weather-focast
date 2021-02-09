@@ -8,16 +8,19 @@ export const application__api = () => ({
       );
 
       if (response?.status === 200) {
-        return response;
+        return Promise.resolve(response);
       } else {
         console.group('API SERVER ERROR❌📦');
         console.error(response);
         console.groupEnd();
+        return Promise.resolve(response);
       }
     } catch (error) {
       console.group('API CLIENT ERROR❌📡');
       console.error(error);
       console.groupEnd();
+
+      return error;
     }
   },
 });

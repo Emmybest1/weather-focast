@@ -9,8 +9,8 @@ $gloomyColor: #2e3341;
   & .header__sec1 {
     display: flex;
 
-    & .fa-map-marker-alt {
-      padding-right: 12px;
+    * {
+      margin-right: 20px;
     }
   }
 
@@ -59,5 +59,31 @@ $gloomyColor: #2e3341;
     margin-top: 50px;
     max-width: 200px;
     width: 70%;
+  }
+}
+
+.weather-container {
+  background-color: #bcfff7;
+  border-radius: 5px;
+  margin: 0 auto;
+  min-height: 150px;
+  padding: 12px;
+  width: 80%;
+
+  & * {
+    padding-bottom: 3px;
+  }
+
+  & h3 {
+    font-size: 0.9em;
+  }
+
+  & p {
+    font-size: 0.8em;
+  }
+
+  & time {
+    font-size: 0.7em;
+    color: #a0a0a0;
   }
 }
