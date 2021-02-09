@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useParams, useHistory, useLocation} from 'react-router-dom';
 import {useUniqueId} from '../../hooks/use-uniqueid';
+import {localStorage} from '../../hooks/use-localstorage';
 import {application__api} from '../../client/client-request';
 import './home.style.scss';
 
@@ -18,6 +19,7 @@ const initialForecastState = () =>
       };
 
 const Home = () => {
+  const [like, setLike] = useState(() => Number(window.localStorage.getItem('like')) ?? 0);
   const [city, setCity] = useState(() => window.localStorage.getItem('city') ?? '');
   const [forecast, setForecast] = useState(() => initialForecastState());
   const [isFetchingForecast, setIsFetchingForecast] = useState(false);
@@ -30,18 +32,18 @@ const Home = () => {
   const derivedBackgroundColor = () => {
     switch (true) {
       case temp_c >= 20:
-        return '#fbd97d';
+        return 'sunny';
 
       case temp_c > 5 && temp_c < 20:
-        return '#2e3341';
+        return 'gloomy';
 
       default:
-        return '#6ff7e7';
+        return 'rainy';
     }
   };
 
   return (
-    <div className="container home" style={{backgroundColor: derivedBackgroundColor()}}>
+    <div className={`container home ${derivedBackgroundColor()}`}>
       <header className="header">
         <section className="header__sec1 row">
           <i className="fa fa-map-marker-alt"></i>
@@ -66,9 +68,11 @@ const Home = () => {
             type="button"
             disabled={city.length >= 1 ? false : true}
             onClick={async () => {
-              //save city to localstorage
+              /*
+               *save last searched city to localstorage
+               */
               if (window.localStorage.getItem('city') !== city) {
-                window.localStorage.setItem('city', city);
+                localStorage('city', city);
               }
 
               history.replace(`/weather/${city}`);
@@ -81,11 +85,20 @@ const Home = () => {
               const {temp_c, condition} = data.current;
               const {icon, text} = condition;
 
-              //save forecast data to localStorage
-              window.localStorage.setItem(
-                'lastForecast',
-                JSON.stringify({country, condition, icon, localtime, name, region, temp_c, text})
-              );
+              /*
+               *save last forecast data to localStorage
+               */
+              localStorage('lastForecast', {
+                country,
+                condition,
+                icon,
+                localtime,
+                name,
+                region,
+                temp_c,
+                text,
+              });
+
               setForecast({country, condition, icon, localtime, name, region, temp_c, text});
             }}
           >
@@ -117,6 +130,20 @@ const Home = () => {
             )}
           </>
         )}
+
+        <div
+          className="apple-wrapper"
+          disabled={like === 1 ? true : false}
+          onClick={() => {
+            if (like !== 1) {
+              setLike((like) => ++like, localStorage('like', 1));
+            }
+          }}
+        >
+          <span>🍏</span>
+          <p>{like === 1 ? 'Thank you 🎉' : 'Like It'}</p>
+          <span>{like}</span>
+        </div>
       </main>
 
       <footer>

@@ -5,7 +5,7 @@ import './app.style.scss';
 
 const App = () => {
   return (
-    <div>
+    <>
       <a href="#main" className="content-skipper">
         Skip to main content
       </a>
@@ -16,7 +16,7 @@ const App = () => {
           <Route exact path="/weather/:cityId" component={Home} />
         </Switch>
       </Router>
-    </div>
+    </>
   );
 };
 

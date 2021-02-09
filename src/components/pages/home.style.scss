@@ -41,13 +41,30 @@ $gloomyColor: #2e3341;
     }
   }
 
+  & .apple-wrapper {
+    cursor: pointer;
+    position: fixed;
+    bottom: 100px;
+    left: 20px;
+    text-align: center;
+    transition: all 0.5s ease-out;
+
+    & p {
+      font-size: 0.7em;
+    }
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+
   & footer {
     background-color: #bcfff7;
-    bottom: 0;
     font-size: 0.7em;
     margin: 0 auto;
     padding: 24px;
     position: fixed;
+    bottom: 0;
     left: 0;
     right: 0;
     text-align: center;
