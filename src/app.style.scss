@@ -1,0 +1,66 @@
+$baseFontSize: 15px;
+$textColor: #2e3341;
+
+/************************
+ * @global styling
+ ************************/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $baseFontSize;
+}
+body {
+  color: $textColor;
+  font-size: $baseFontSize;
+  font-family: 'Comfortaa', cursive;
+}
+
+img {
+  display: block;
+  object-fit: cover;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+:disabled {
+  cursor: not-allowed;
+}
+
+/************************
+ * @layout styling
+ ************************/
+.content-skipper {
+  background-color: #eee;
+  border: solid 1px #000;
+  border-radius: 5px;
+  color: #000;
+  font-size: 0.7em;
+  padding: 5px;
+  position: absolute;
+  z-index: 20000;
+  left: -1000px;
+
+  &:focus {
+    left: 0px;
+  }
+}
+
+.container {
+  padding: 8px 24px;
+}
