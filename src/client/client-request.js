@@ -19,7 +19,7 @@ export const application__api = () => ({
       console.group('API CLIENT ERROR❌📡');
       console.error(error);
       console.groupEnd();
-
+      window.location.replace('/fallback');
       return error;
     }
   },

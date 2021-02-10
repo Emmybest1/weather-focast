@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {useParams, useHistory, useLocation} from 'react-router-dom';
-import {useUniqueId} from '../../hooks/use-uniqueid';
-import {localStorage} from '../../hooks/use-localstorage';
-import {application__api} from '../../client/client-request';
+import {useUniqueId} from '../../../hooks/use-uniqueid';
+import {localStorage} from '../../../hooks/use-localstorage';
+import {application__api} from '../../../client/client-request';
 import './home.style.scss';
 
 const initialForecastState = () =>
