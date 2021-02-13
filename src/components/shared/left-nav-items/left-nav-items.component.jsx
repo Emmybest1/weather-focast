@@ -1,8 +1,8 @@
 import React from 'react';
-import {LeftNavItem} from '../left-nav-item/left-nav-item';
-import {menuItems} from '../../../utils/menu-items.json';
+import {LeftNavItem} from '../left-nav-item/left-nav-item.component';
+import {menuItems} from '../../../data/menu-items.json';
 
-const LeftNavItems = () => {
+export const LeftNavItems = () => {
   return (
     <nav>
       <ul>
