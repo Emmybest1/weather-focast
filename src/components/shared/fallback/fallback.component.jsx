@@ -2,7 +2,7 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import './fallback.style.scss';
 
-const Fallback = () => {
+export const Fallback = () => {
   const history = useHistory();
   return (
     <div className="fallback-container">

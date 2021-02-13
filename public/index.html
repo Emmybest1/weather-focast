@@ -6,29 +6,31 @@
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/054170e3d7.js" crossorigin="anonymous"></script>
+  <meta name="application-name" content="%REACT_APP_NAME%" />
+  <meta name="description" content="application for weather forecast and searchin for countries adventures" />
   <title>%REACT_APP_NAME%</title>
+  <link rel="apple-touch-icon" href="./logo1024.png" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/054170e3d7.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-
+  <div id="appRoot"></div>
+  <div id="modalRoot"></div>
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./serviceworker").then(reg => {
-          console.group("🦺SERVICE WORKER ✅")
+        navigator.serviceWorker.register("/serviceworker.js").then(reg => {
+          console.group("🦺 SERVICE WORKER ✅")
           console.log(reg.scope)
           console.groupEnd()
         }).catch(error => {
-          console.group("🦺SERVICE WORKER ❌")
+          console.group("🦺 SERVICE WORKER ❌")
           console.error(error)
           console.groupEnd()
         })
@@ -38,5 +40,4 @@
 </body>
 
 </html>
-
 <!--image ref: https://www.flaticon.com/ -->

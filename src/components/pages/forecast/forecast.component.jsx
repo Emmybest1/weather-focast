@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {useParams, useHistory, useLocation} from 'react-router-dom';
 import {useUniqueId} from '../../../hooks/use-uniqueid';
 import {localStorage} from '../../../hooks/use-localstorage';
-import {application__api} from '../../../client/client-request';
+import {api} from '../../../client/http-request';
+import {Header} from '../../structures/header/header.component';
+import {Footer} from '../../structures/footer/footer.component';
 import './forecast.style.scss';
 
 const initialForecastState = () =>
@@ -43,9 +45,7 @@ const Forecast = () => {
   };
 
   const fetchForecast = async () => {
-    /*
-     *save last searched city to localstorage
-     */
+    //save last searched city to localstorage
     if (window.localStorage.getItem('city') !== city) {
       localStorage('city', city);
     }
@@ -54,7 +54,7 @@ const Forecast = () => {
       history.replace(`/forecast/${city}`);
     }
     setIsFetchingForecast(true);
-    const response = await application__api().get(city);
+    const response = await api().get(city);
     const data = response.data;
     setIsFetchingForecast(false);
 
@@ -62,9 +62,7 @@ const Forecast = () => {
     const {temp_c, condition} = data.current;
     const {icon, text} = condition;
 
-    /*
-     *save last forecast data to localStorage
-     */
+    //save last forecast data to localStorage
     localStorage('lastForecast', {
       country,
       condition,
@@ -82,42 +80,36 @@ const Forecast = () => {
 
   return (
     <div className={`container forecast ${derivedBackgroundColor()}`}>
-      <header className="header">
-        <section className="header__sec1 row">
-          <i className="fa fa-map-marker-alt"></i>
-          <h4>⛈️ App</h4>
-          {location.pathname.includes('/forecast') && (
-            <i className="fa fa-home button" onClick={() => history.push('/')}></i>
-          )}
-        </section>
+      <Header
+        fragment={
+          <section className="header__sec2 row" tabIndex="0">
+            <input
+              type="search"
+              id={searchId}
+              name="city"
+              value={city}
+              placeholder="Search city"
+              aria-label="Search city weather"
+              onChange={(ev) => setCity(ev.target.value)}
+              onKeyPress={(ev) => {
+                if (ev.key === 'Enter') {
+                  fetchForecast();
+                }
+                return;
+              }}
+            />
 
-        <section className="header__sec2 row" tabIndex="0">
-          <input
-            type="search"
-            id={searchId}
-            name="city"
-            value={city}
-            placeholder="Search city"
-            aria-label="Search city weather"
-            onChange={(ev) => setCity(ev.target.value)}
-            onKeyPress={(ev) => {
-              if (ev.key === 'Enter') {
-                fetchForecast();
-              }
-              return;
-            }}
-          />
-
-          <button type="button" disabled={city.length >= 1 ? false : true} onClick={fetchForecast}>
-            Search
-          </button>
-        </section>
-      </header>
+            <button type="button" disabled={city.length >= 1 ? false : true} onClick={fetchForecast}>
+              Search
+            </button>
+          </section>
+        }
+      />
 
       <main>
         {!cityId?.length >= 1 ? (
           <div className="landing-container">
-            <img src={`${process.env.PUBLIC_URL}/assets/images/rain.svg`} alt="" className="home__bg" />
+            <img src={`${process.env.PUBLIC_URL}/assets/images/rain.svg`} alt="" className="forecast__bg" />
           </div>
         ) : (
           <>
@@ -153,9 +145,7 @@ const Forecast = () => {
         </div>
       </main>
 
-      <footer>
-        Made with ❤️ by AfricLite <time>{new Date().getFullYear()}</time>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -1,0 +1,48 @@
+$sunnyColor: #fbd97d;
+$rainyColor: #6ff7e7;
+$gloomyColor: #2e3341;
+
+header {
+  width: 100%;
+
+  & .header__sec1 {
+    justify-content: space-between;
+
+    & .menu-icon {
+      padding: 3px;
+      & * {
+        background-color: $gloomyColor;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        display: block;
+        height: 2px;
+        margin-bottom: 3px;
+      }
+      & .top {
+        width: 25px;
+      }
+
+      & .middle {
+        width: 35px;
+      }
+
+      & .bottom {
+        width: 30px;
+      }
+
+      &:focus {
+        border: solid 1px #eee;
+        border-radius: 5px;
+        box-shadow: none;
+        outline: none;
+        padding: 3px;
+      }
+    }
+  }
+}
+
+.border-bottom {
+  border-bottom: solid 1px #eee;
+}

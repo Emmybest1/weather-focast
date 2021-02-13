@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const application__api = () => ({
+export const api = () => ({
   async get(city = 'tallinn') {
     try {
       const response = await axios.get(

@@ -6,14 +6,6 @@ $gloomyColor: #2e3341;
   background-color: $rainyColor;
   height: 100vh;
 
-  & .header__sec1 {
-    display: flex;
-
-    * {
-      margin-right: 20px;
-    }
-  }
-
   & .header__sec2 {
     display: flex;
     margin: 24px auto;
@@ -58,20 +50,7 @@ $gloomyColor: #2e3341;
     }
   }
 
-  & footer {
-    background-color: #bcfff7;
-    font-size: 0.7em;
-    margin: 0 auto;
-    padding: 24px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    width: 100%;
-  }
-
-  & .home__bg {
+  & .forecast__bg {
     margin: 0 auto;
     margin-top: 50px;
     max-width: 200px;
