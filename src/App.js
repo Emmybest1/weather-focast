@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/pages/home/home.component';
 import Forecast from './components/pages/forecast/forecast.component';
-import Fallback from './components/partials/fallback/fallback.component';
+import Fallback from './components/shared/fallback/fallback.component';
 import './app.style.scss';
 
 const App = () => {

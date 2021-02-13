@@ -9,6 +9,6 @@ process.env.NODE_ENV === 'development' && middlerwares.push(logger);
 
 const composeEnhancers = composeWithDevTools({name: 'redux', trace: true, realtime: true, traceLimit: 20});
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlerwares)));
-console.group('FORECAST1 📦');
-console.log('FORECAST1 IS LIVE 📡');
+console.group('DISCOVERY1 📦');
+console.log('DISCOVERY1 IS LIVE 📡');
 console.groupEnd();
