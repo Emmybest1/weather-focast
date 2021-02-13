@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Home from './components/pages/home/home.component';
-import Fallback from './components/pages/fallback/fallback.component';
+import Forecast from './components/pages/forecast/forecast.component';
+import Fallback from './components/partials/fallback/fallback.component';
 import './app.style.scss';
 
 const App = () => {
@@ -13,8 +13,8 @@ const App = () => {
 
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/weather/:cityId" component={Home} />
+          <Route exact path="/" component={Forecast} />
+          <Route exact path="/forecast/:cityId" component={Forecast} />
           <Route exact path="/fallback" component={Fallback} />
           <Route component={Fallback} />
         </Switch>

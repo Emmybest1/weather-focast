@@ -20,6 +20,21 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
 
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./serviceworker").then(reg => {
+          console.group("🦺SERVICE WORKER ✅")
+          console.log(reg.scope)
+          console.groupEnd()
+        }).catch(error => {
+          console.group("🦺SERVICE WORKER ❌")
+          console.error(error)
+          console.groupEnd()
+        })
+      })
+    }
+  </script>
 </body>
 
 </html>

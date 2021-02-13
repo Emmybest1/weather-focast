@@ -3,7 +3,7 @@ import {useParams, useHistory, useLocation} from 'react-router-dom';
 import {useUniqueId} from '../../../hooks/use-uniqueid';
 import {localStorage} from '../../../hooks/use-localstorage';
 import {application__api} from '../../../client/client-request';
-import './home.style.scss';
+import './forecast.style.scss';
 
 const initialForecastState = () =>
   window.localStorage.getItem('lastForecast')
@@ -18,7 +18,7 @@ const initialForecastState = () =>
         icon: '',
       };
 
-const Home = () => {
+const Forecast = () => {
   const [like, setLike] = useState(() => Number(window.localStorage.getItem('like')) ?? 0);
   const [city, setCity] = useState(() => window.localStorage.getItem('city') ?? '');
   const [forecast, setForecast] = useState(() => initialForecastState());
@@ -42,13 +42,51 @@ const Home = () => {
     }
   };
 
+  const fetchForecast = async () => {
+    /*
+     *save last searched city to localstorage
+     */
+    if (window.localStorage.getItem('city') !== city) {
+      localStorage('city', city);
+    }
+
+    if (!location.pathname.includes(`/forecast/${city}`)) {
+      history.replace(`/forecast/${city}`);
+    }
+    setIsFetchingForecast(true);
+    const response = await application__api().get(city);
+    const data = response.data;
+    setIsFetchingForecast(false);
+
+    const {name, region, country, localtime} = data.location;
+    const {temp_c, condition} = data.current;
+    const {icon, text} = condition;
+
+    /*
+     *save last forecast data to localStorage
+     */
+    localStorage('lastForecast', {
+      country,
+      condition,
+      icon,
+      localtime,
+      name,
+      region,
+      temp_c,
+      text,
+    });
+
+    setForecast({country, condition, icon, localtime, name, region, temp_c, text});
+    setCity('');
+  };
+
   return (
-    <div className={`container home ${derivedBackgroundColor()}`}>
+    <div className={`container forecast ${derivedBackgroundColor()}`}>
       <header className="header">
         <section className="header__sec1 row">
           <i className="fa fa-map-marker-alt"></i>
           <h4>⛈️ App</h4>
-          {location.pathname.includes('/weather') && (
+          {location.pathname.includes('/forecast') && (
             <i className="fa fa-home button" onClick={() => history.push('/')}></i>
           )}
         </section>
@@ -62,46 +100,15 @@ const Home = () => {
             placeholder="Search city"
             aria-label="Search city weather"
             onChange={(ev) => setCity(ev.target.value)}
+            onKeyPress={(ev) => {
+              if (ev.key === 'Enter') {
+                fetchForecast();
+              }
+              return;
+            }}
           />
 
-          <button
-            type="button"
-            disabled={city.length >= 1 ? false : true}
-            onClick={async () => {
-              /*
-               *save last searched city to localstorage
-               */
-              if (window.localStorage.getItem('city') !== city) {
-                localStorage('city', city);
-              }
-
-              history.replace(`/weather/${city}`);
-              setIsFetchingForecast(true);
-              const response = await application__api().get(city);
-              const data = response.data;
-              setIsFetchingForecast(false);
-
-              const {name, region, country, localtime} = data.location;
-              const {temp_c, condition} = data.current;
-              const {icon, text} = condition;
-
-              /*
-               *save last forecast data to localStorage
-               */
-              localStorage('lastForecast', {
-                country,
-                condition,
-                icon,
-                localtime,
-                name,
-                region,
-                temp_c,
-                text,
-              });
-
-              setForecast({country, condition, icon, localtime, name, region, temp_c, text});
-            }}
-          >
+          <button type="button" disabled={city.length >= 1 ? false : true} onClick={fetchForecast}>
             Search
           </button>
         </section>
@@ -153,4 +160,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Forecast;
