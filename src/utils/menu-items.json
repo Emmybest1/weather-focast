@@ -1,0 +1,7 @@
+{
+  "menuItems": [
+    {"id": "xyz2020", "name": "Adventures", "url": "/adventures"},
+    {"id": "xyz2021", "name": "Forecast", "url": "/forecast"},
+    {"id": "xyz2022", "name": "Disasters", "url": "/disasters"}
+  ]
+}
