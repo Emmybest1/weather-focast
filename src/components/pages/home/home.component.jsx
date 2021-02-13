@@ -1,19 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Header} from '../../structures/header/header.component';
 import {Footer} from '../../structures/footer/footer.component';
+import {LeftNavigation} from '../../shared/left-navigation/left-navigation.component';
 
-const Home = ({}) => {
+const Home = () => {
   return (
     <>
       <Header />
 
-      <main></main>
+      <main>
+        <LeftNavigation />
+      </main>
 
       <Footer />
     </>
   );
 };
 
-Home.propTypes = {};
 export default Home;

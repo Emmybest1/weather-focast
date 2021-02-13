@@ -1,11 +1,11 @@
 import React from 'react';
-import {NabLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export const LeftNavItem = ({navItem}) => (
-  <NabLink id={navItem.id} to={navItem.url}>
+  <NavLink id={navItem.id} to={navItem.url}>
     {navItem.name}
-  </NabLink>
+  </NavLink>
 );
 
 LeftNavItem.propTypes = {
@@ -16,4 +16,4 @@ LeftNavItem.propTypes = {
   }),
 };
 
-export default LeftNavItems;
+export default LeftNavItem;
