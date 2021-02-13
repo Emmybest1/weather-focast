@@ -1,6 +1,10 @@
 footer {
   background-color: #171615;
   color: #eee;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   font-size: 0.7em;
   margin: 0 auto;
   padding: 24px;
@@ -10,4 +14,19 @@ footer {
   right: 0;
   text-align: center;
   width: 100%;
+
+  & .social-media-wrapper {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    padding-right: 24px;
+
+    & a {
+      margin-right: 5px;
+      & i {
+        color: #8d8d8d;
+      }
+    }
+  }
 }
