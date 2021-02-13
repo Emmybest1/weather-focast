@@ -5,13 +5,13 @@ import './fallback.style.scss';
 export const Fallback = () => {
   const history = useHistory();
   return (
-    <div className="fallback-container">
-      <main>
+    <main>
+      <div className="fallback-container">
         <img src={`${process.env.PUBLIC_URL}/assets/images/dissatisfaction.svg`} alt="" />
         <p>We are sorry what you request is invalid</p>
         <button onClick={() => history.replace('/')}>Go Home</button>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 };
 

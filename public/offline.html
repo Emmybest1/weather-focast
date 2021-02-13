@@ -7,19 +7,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="application-name" content="%REACT_APP_NAME%" />
-    <meta name="description" content="application for weather forecast and searching for countries adventures" />
+    <meta name="description"
+        content="this is an application for weather forecast and searching for countries adventure" />
     <title>Discovery1</title>
     <link rel="stylesheet" href="./style/offline.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/054170e3d7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header></header>
     <main>
-        <div class="offline-container">
-            Please go online to view the realtime data
+        <div class="fallback-container">
+            <img src="./assets//images/dissatisfaction.svg" alt="" />
+            <p>Please connect to the internet to continue using this app</p>
         </div>
     </main>
-    <footer></footer>
+    <footer>
+        <span class="social-media-wrapper">
+            <a href="https://www.instagram.com/creativedevelopals/" target="_blank" rel="noreferrer"
+                aria-describedby="instagramLink">
+                <span id="instagramLink" style="display:none;" aria-hidden=true>
+                    Link to Discovery1 founders instagram page
+                </span>
+                <i class="fab fa-instagram-square"></i>
+            </a>
+
+            <a href="https://www.facebook.com/creativedevelopals" target="_blank" rel="noreferrer"
+                aria-describedby="facebookLink">
+                <span id="facebookLink" style="display:none;" aria-hidden=true>
+                    Link to Discovery1 founders facebook page
+                </span>
+                <i class="fab fa-facebook-square"></i>
+            </a>
+        </span>
+
+        <span>
+            Made with ❤️ by CreativeDevelopals <time></time>
+        </span>
+    </footer>
 </body>
 <script src="./script/offline.js"></script>
 
