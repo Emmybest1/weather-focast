@@ -10,7 +10,7 @@ import './forecast.style.scss';
 const initialForecastState = () =>
   window.localStorage.getItem('lastForecast')
     ? JSON.parse(window.localStorage.getItem('lastForecast'))
-    : {
+    : Object.freeze({
         name: '',
         region: '',
         country: '',
@@ -18,7 +18,7 @@ const initialForecastState = () =>
         temp_c: null,
         text: '',
         icon: '',
-      };
+      });
 
 const Forecast = () => {
   const [like, setLike] = useState(() => Number(window.localStorage.getItem('like')) ?? 0);
@@ -45,7 +45,6 @@ const Forecast = () => {
   };
 
   const fetchForecast = async () => {
-    //save last searched city to localstorage
     if (window.localStorage.getItem('city') !== city) {
       localStorage('city', city);
     }
@@ -62,7 +61,6 @@ const Forecast = () => {
     const {temp_c, condition} = data.current;
     const {icon, text} = condition;
 
-    //save last forecast data to localStorage
     localStorage('lastForecast', {
       country,
       condition,

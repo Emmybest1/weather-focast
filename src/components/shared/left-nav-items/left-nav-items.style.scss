@@ -2,11 +2,15 @@
   & ul {
     & > li {
       padding: 8px 24px;
-      border-bottom: solid 0.5px rgb(114, 114, 114);
+      border-bottom: solid 0.5px #727272;
       width: 100%;
-      & a {
-        color: #eee;
+      & > a {
+        color: #d0d0d0;
         font-size: 0.9rem;
+      }
+
+      & :hover {
+        color: #fff;
       }
     }
   }

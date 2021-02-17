@@ -14,7 +14,10 @@ export const Header = ({fragment}) => {
     <header className={`container ${location.pathname === '/' ? 'border-bottom' : ''}`}>
       <section className="header__sec1 row a-t-center a-c-center">
         <div className="row a-t-center a-c-center">
-          <h4 className="logo-text">⛈️Discovery1</h4>
+          <h4 className="logo">
+            Discovery1 <sup>⛈️</sup>
+          </h4>
+
           {` `}
           {!isRootPathName && <i className="fa fa-home button" onClick={() => history.push('/')}></i>}
         </div>

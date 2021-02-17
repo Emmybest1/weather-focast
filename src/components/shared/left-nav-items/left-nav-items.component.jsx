@@ -1,6 +1,6 @@
 import React from 'react';
 import {LeftNavItem} from '../left-nav-item/left-nav-item.component';
-import {menuItems} from '../../../data/menu-items.json';
+import {menuItems} from '../../data/menu-items.json';
 import './left-nav-items.style.scss';
 
 export const LeftNavItems = () => (

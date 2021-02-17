@@ -1,10 +1,10 @@
 import {types} from './adventures.types';
 
-export const initialState = {
+export const initialState = Object.freeze({
   isLoading: false,
   error: null,
   adventures: [],
-};
+});
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
