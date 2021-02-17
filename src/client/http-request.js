@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {apiConsolePrinter} from '../utils/api-console-print';
 
 export const api = () => ({
   async get(city = 'tallinn') {
@@ -10,16 +11,10 @@ export const api = () => ({
       if (response?.status === 200) {
         return Promise.resolve(response);
       } else {
-        console.group('API SERVER ERROR❌📦');
-        console.error(response);
-        console.groupEnd();
-        return Promise.resolve(response);
+        apiConsolePrinter(0, response);
       }
     } catch (error) {
-      console.group('API CLIENT ERROR❌📡');
-      console.error(error);
-      console.groupEnd();
-      window.location.replace('/fallback');
+      apiConsolePrinter(0, error);
       return error;
     }
   },
