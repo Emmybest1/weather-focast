@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {useHistory, useLocation} from 'react-router-dom';
-import {LeftNavigation} from '../../shared/left-navigation/left-navigation.component';
+import {LeftNavigation} from '../../partials/left-navigation/left-navigation.component';
 import './header.style.scss';
 
 export const Header = ({fragment}) => {
